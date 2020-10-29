@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>nownproctor</title>
+    <link rel="shortcut icon" href="images/nownproctor.ico">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      footer{
+        background-color: white;
+      }
+    </style>
+</head>
+<body>
+    <div id="app">
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
+          <div class="container">
+              <a class="navbar-brand" href="#" style="color:#EC5C24; font-weight: bold; font-size: 25px; font-family: 'Noto Sans KR', sans-serif;"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor">
+                  <!--{{ config('app.name', 'nownproctor') }}-->
+              </a>
+              <button class="navbar-toggler" type="button" style="border: 0;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <!-- Left Side Of Navbar -->
+                  <ul class="navbar-nav mr-auto">
+
+                  </ul>
+
+                  <!-- Right Side Of Navbar -->
+                  <ul class="navbar-nav ml-auto">
+
+
+                          <li class="nav-item dropdown">
+                              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  사용자 이름<span class ="caret"></span>
+                              </a>
+
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                      Logout
+                                  </a>
+
+                                  <form id="logout-form" action="platform.html" method="POST" style="display: none;">
+
+                                  </form>
+                              </div>
+                          </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+        <main class="pt-4 d-flex">
+
+
+              <div class="container" style="max-width: 100%; background-color: white; min-height: 100vh" id="content_container">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+
+                        <div class="alert alert-success" role="alert">
+                            상태 입니다.
+                        </div>
+
+
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</main>
+<!-- Footer -->
+<footer class="py-4">
+    <div class="container">
+
+             <div class="row footer-bottom-area">
+
+              <div class="col-lg-2 col-md-3 col-sm-12 col-12">
+                  <div class="logo-elimnet">
+                      <a href="http://elim.net/" target="_blank"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor"></a>
+                  </div>
+              </div>
+
+              <div class="col-lg-10 col-md-10 col-sm-12 col-12">
+                  <div class="address" style="font-size: 10px; color:grey;">
+                      <p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">(주)엘림넷  ㅣ  대표이사 : 한환희  ㅣ  사업자등록번호 : 220-81-97656  ㅣ  통신판매업 신고번호 : 서대문 제2-02666호
+  주소 : 120 - 837 서울시 서대문구 충정로3가 32-11 엘림넷 빌딩  ㅣ  TEL : 02-3149-4832  ㅣ  FAX : 02-3149-4998  ㅣ  EMAIL : vidyokorea@elim.net
+                         </p>
+                      <p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">Copyright(c) 2018 by ELIM.NET Co.,Ltd. All rights reserved.</p>
+                  </div>
+              </div>
+
+
+         </div>
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+</body>
+</html>

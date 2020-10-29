@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <title>nownproctor</title>
+      <link rel="shortcut icon" href="images/nownproctor.ico">
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <style>
+
+      @media (max-width: 1280px){
+        #hero-img{
+          max-width: 400px !important;
+        }
+        #hero{
+          max-width: 1280px;
+        }
+        .hero-col.left{
+          padding: 0 5px 0 45px !important;
+        }
+        .hero-col.right{
+          padding: 0 45px 0 5px !important;
+        }
+        #download p{
+          font-size: 1.2rem !important;
+
+        }
+      }
+
+      @media (max-width: 1024px){
+        .download-img{
+          height: 200px !important;
+        }
+        p{
+          font-size: 1rem;
+        }
+        #hero h1{
+          font-size: 2.2rem !important;
+        }
+        #hero p{
+          font-size: 1rem !important;
+        }
+
+        h2{
+          font-size: 2rem;
+        }
+        h4{
+          font-size: 1.5rem;
+        }
+        .hero-col.left{
+          padding: 0 5px 0 10px !important;
+        }
+        .hero-col.right{
+          padding: 0 10px 0 5px !important;
+        }
+
+        #price .col-md-4 div{
+          margin: 0px !important;
+        }
+        #download p{
+          font-size: 0.9rem !important;
+
+        }
+      }
+
+      @media (max-width: 992px){
+        #contact p{
+          font-size: 1.1rem !important;
+        }
+      }
+
+      @media (max-width: 768px){
+        #hero{
+          max-width: 768px;
+        }
+        .hero-col.left{
+          padding: 0 50px 0 50px !important;
+        }
+        .hero-col.right{
+          padding: 0 50px 0 50px !important;
+        }
+        #contact p{
+          font-size: 20px !important;
+        }
+
+      }
+
+      @media (max-width: 425px){
+        #hero {
+          padding-top: 100px !important;
+        }
+      }
+
+      .navbar-nav button:hover{
+        background-color: #E54E13 !important;
+      }
+
+      .nav-item{
+        margin: 0 5px 0 5px;
+      }
+
+      #hero{
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .second{
+       text-align: center;
+
+      }
+      #service{
+         padding: 100px 0 100px 0;
+      }
+      #price{
+         padding: 100px 0 100px 0;
+      }
+      .service{
+       margin-top: 80px;
+       margin-bottom: 100px;
+       text-align: center;
+
+      }
+      .people{
+       text-align: center;
+      }
+      .download{
+       text-align: center;
+      }
+      .pay{
+          text-align: center;
+      }
+
+      p{
+        font-size: 1.5rem;
+      }
+      footer p{
+        font-size: .98rem;
+      }
+      h1{
+        font-size: 3rem;
+      }
+      #hero h1{
+        margin-bottom: 20px;
+        font-family: 'Noto Sans KR',sans-serif;
+        font-weight: 900;
+        margin-top: 55px;
+        font-size: 45px;
+      }
+      #hero p{
+        margin-bottom: 30px;
+        font-family: 'Noto Sans KR', sans-serif;
+        color: #686868;
+        font-size: 20px;
+      }
+
+      h2{
+        font-size: 2.5rem;
+      }
+      h4{
+        font-size: 2rem;
+      }
+
+      .download p{
+        font-size: 1rem;
+      }
+      body{
+        background-color: white;
+      }
+
+      #price p{
+        font-size: 1rem;
+      }
+
+    #price h4{
+      font-size: 1.5rem;
+    }
+
+    .btn-success{
+      background-color:#FA9D79;
+      border-color:#FA9D79;
+    }
+    .btn-success:hover{
+      background-color: #EC5C25;
+      border-color: #EC5C25;
+    }
+
+    .btn-success:focus, .btn-success:active {
+      background-color: #EC5C25 !important;
+      border-color: #EC5C25 !important;
+      box-shadow: none !important;
+      outline:none !important;
+    }
+
+    .btn-success:not(:disabled):not(.disabled):active,
+.btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #fff;
+  background-color: #EC5C25;
+  border-color: #EC5C25;
+}
+.focus{
+  box-shadow: 0 0 0 0.2rem #FA9D79 !important;
+}
+
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: none !important;
+}
+
+.contact-btn{
+margin: 0 10px 0 10px;
+padding: 10px 15px 10px 15px;
+background-color: #F8F8F8;
+border-color: #D8D8D8;
+color: #9D9D9D
+}
+
+.contact-btn.active{
+background-color: #EC5C25 !important;
+border-color: #FA9D79 !important;
+}
+
+.contact-btn.active:focus{
+box-shadow: 0 0 0 0.2rem #FA9D79 !important;
+}
+
+.contact-btn.active:hover{
+background-color: #EC5C25 !important;
+border-color: #FA9D79 !important;
+box-shadow: 0 0 0 0.2rem #FA9D79;
+}
+
+.contact-btn:hover{
+  background-color: #FA9D79 !important;
+  border-color: #EC5C25;
+}
+
+      </style>
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
+                  <div class="container">
+                      <a class="navbar-brand" href="#" style="color:#EC5C24; font-size: 25px; font-family: 'Noto Sans KR', sans-serif;"><img src="images/logo_nownproctor.png" alt="" style="width:150px;">
+
+                      </a>
+                      <button class="navbar-toggler" type="button" style="border: 0;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                      </button>
+
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <!-- Left Side Of Navbar -->
+                          <ul class="navbar-nav mr-auto">
+
+                          </ul>
+
+                          <!-- Right Side Of Navbar -->
+                          <ul class="navbar-nav ml-auto">
+                              <!-- Authentication Links -->
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="#service" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 900;">서비스</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="#download" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 900;">다운로드</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="#price" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 900;">요금제</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="#contact" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px; padding-right: 100px; font-weight: 900;">문의</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="login.html" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px; padding-right: 20px; color: #EC5C24; font-weight: 900;">로그인</a>
+                                  </li>
+                                  <button type="button" onclick="window.location.href='register.html'" class="btn btn-danger" style="font-family: 'Noto Sans KR', sans-serif; background-color: #EC5C24; border-color:#EC5C24; padding: 6px 20px 6px 20px; border-radius: 10px;">등록</button>
+                                  <!--<li class="nav-item dropdown">
+                                      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                          ebc<span class ="caret"></span>
+                                      </a>
+
+                                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                          <a class="dropdown-item" href="{{ route('logout') }}"
+                                             onclick="event.preventDefault();
+                                                           document.getElementById('logout-form').submit();">
+                                          </a>
+
+
+                                      </div>
+                                  </li>-->
+
+                          </ul>
+                      </div>
+                  </div>
+              </nav>
+          <main class="" style="margin-top:66px;">
+              <div class="container-fluid">
+                  <section id="hero" style="padding: 130px 0 100px 0;">
+                      <div class="row main">
+                          <div class="col-md-6 hero-col left" style="padding: 0 50px 0 50px">
+                              <div style="margin-left: 60px;">
+                                <h1 style="">쉽고 편한<br>온라인 시험 감독 솔루션</h1>
+                                <p style="">신개념 시험 감독 솔루션 나우앤프록터는 온라인 시험의<br>부정행위 근절을 위한 최고의 영상솔루션입니다.</p>
+                                <form action="register.html">
+                                  <div class="container">
+                                    <div class="form-group row">
+                                        <div class = "col-lg-6 col-8" style="padding-right: 0; padding-left: 0px;">
+                                            <input type="text" class="form-control" style="background-color: #F5F5F5; border-color:#F5F5F5; border-radius: 10px; height: 44px; margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif;" placeholder="이메일을 입력해 주세요">
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="submit" class="btn btn-success" value="등록하기" style=" border-radius: 10px; height: 44px; padding: 6px 15px 6px 15px; margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif;">
+                                        </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                          </div>
+                          <div class="col-md-6 hero-col right" style="padding: 0 50px 0 50px; text-align: center;">
+                              <!--<img src="/images/프록터.svg" id="hero-img" alt="메인 이미지" style="width:100%; max-width:500px;">-->
+                              <video src="images/proctor.mp4" autoplay loop playsinline muted style="width:100%; max-width:500px;">
+
+                              </video>
+                          </div>
+                      </div>
+                  </section>
+                  <section id="service" style="">
+                    <div class="container">
+                      <div class="row second">
+                          <div class="col-md-12">
+                                  <h2 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 35px;">서비스 소개</h2>
+                                      <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868; font-size: 20px;">나우앤프록터는 온라인 시험의 공정성을 위한 최적의 솔루션입니다.</p>
+                          </div>
+                      </div>
+                      <div class="row service">
+                        <div class="col-md-4" style="padding: 0 30px 0 30px;">
+                            <!--<img src="/images/감독관.svg" alt="메인 이미지" style="margin-bottom: 50px; width:60%;">-->
+                            <video src="images/감독관.mp4" autoplay loop muted playsinline style="margin-bottom: 50px; width:60%;"></video>
+                                <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 25px;">감독관</h4>
+                            <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868; font-size: 18px;">모든 수험생을 소수의 인원으로 감독이 가능합니다. 또한 녹화를 통한 사후 처리를 지원합니다.</p>
+                        </div>
+                        <div class="col-md-4" style="padding: 0 30px 0 30px;">
+                            <!--<img src="/images/수험생.svg" alt="메인 이미지" style="margin-bottom: 50px; width:60%;">-->
+                            <video src="images/수험생.mp4" autoplay loop muted playsinline style="margin-bottom: 50px; width:60%;"></video>
+                                <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 25px;">수험생</h4>
+                            <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868; font-size: 18px;">자신의 모바일 장비를 이용해 감독관 영상으로 수험생의 모습을 전송 가능 합니다.</p>
+                        </div>
+                        <div class="col-md-4" style="padding: 0 30px 0 30px;">
+                            <!--<img src="/images/관리자.svg" alt="메인 이미지" style="margin-bottom: 50px; width:60%;">-->
+                            <video src="images/관리자.mp4" autoplay loop muted playsinline style="margin-bottom: 50px; width:60%;"></video>
+                                <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 25px;">관리자</h4>
+                            <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868; font-size: 18px;">시스템의 모든 부분에 개입하여 영상, 음향 뿐 아니라 전반적인 시스템을 실 시간으로 제어할 수 있습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <section id="download" style="padding-top:66px;">
+                      <div class="row download">
+                          <div class="col-md-6" style="padding: 180px 0 180px 0; background-color: #F8F8F8;">
+                            <h2 style="margin:0 0 20px 0; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 35px;">감독관용 다운로드</h2>
+                            <p style="margin:20px 0 30px 0; font-family: 'Noto Sans KR', sans-serif; font-size: 20px; color: #686868;">시험 감독에 필요한 프로그램을 다운로드 받을 수 있습니다.</P>
+                            <div class="row" style="margin-bottom: 60px;">
+
+                                <div style="margin: 0 auto;">
+                                    <div class="alert alert-primary"role="alert" style="display:inline-block; border-radius: 50px; margin: 0 5px 16px 5px;">MacOS</div>
+
+
+                                  <div class="alert alert-success"role="alert" style="display:inline-block; border-radius: 50px; margin: 0 5px 16px 5px;">Windows 7</div>
+
+
+                                  <div class="alert alert-danger"role="alert" style="display:inline-block; border-radius: 50px; margin: 0 5px 16px 5px;">Windows 10</div>
+                                </div>
+
+                          </div>
+                            <div style="margin-bottom: 70px;"><img class="download-img" src="images/nownproctor_pc.png" alt="" style="height:300px;"></div>
+                            <button type="button" onclick="window.location.href='http://proctor.nownnow.com'" class="btn btn-success" style="border-radius: 10px; height: 44px; padding: 6px 20px 6px 20px; font-family: 'Noto Sans KR', sans-serif;">다운로드</button>
+                          </div>
+                          <div class="col-md-6" style="padding: 180px 0 180px 0; background-color:rgba(255, 201, 181, 0.5);">
+                            <h2 style="margin:0 0 20px 0; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 35px;">수험생용 다운로드</h2>
+                            <p style="margin:20px 0 30px 0; font-family: 'Noto Sans KR', sans-serif; font-size: 20px; color: #686868;">수험생이 응시에 필요한 프로그램을 다운로드 받을 수 있습니다.</P>
+                            <div class="row" style="margin-bottom: 60px;">
+                              <div style="margin: 0 auto;">
+                                <div class="alert alert-primary"role="alert" style="display:inline-block; border-radius: 50px; margin: 0 5px 16px 5px;">iOS[예정]</div>
+                                <div class="alert alert-success"role="alert" style="display:inline-block; border-radius: 50px; margin: 0 5px 16px 5px;">Android</div>
+                              </div>
+                            </div>
+                            <div style="margin-bottom: 70px;"><img class="download-img" src="images/nownproctor_ios.png" alt="" style="height:300px;"></div>
+                            <button type="button" onclick="window.location.href='download.html'" class="btn btn-success" style="border-radius: 10px; height: 44px; padding: 6px 20px 6px 20px; font-family: 'Noto Sans KR', sans-serif;">다운로드</button>
+                          </div>
+                      </div>
+                  </section>
+                  <section id="price" style="padding-top: 150px;">
+                    <div class"container">
+                      <div class="row pay">
+                          <div class="col-md-12">
+                            <h2 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 35px;">요금 안내</h2>
+                            <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868; font-size: 20px;">나우앤프록터는 온라인 시험의 공정성을 위한 최적의 솔루션입니다.</p>
+                          </div>
+                      </div>
+                      <div class="row service">
+                          <div class="col-md-12">
+                              <div class="container">
+                                  <div class="row people">
+                                      <div class="col-md-4">
+                                        <div style="margin: 0 10px 0 10px; padding: 30px 0 30px 0; box-shadow: 3px 10px 40px rgba(0, 0, 0, 0.1); border-radius: 30px;">
+                                        <img src="images/technologist.png" alt="1" style="width:10%;">
+                                          <h5 style="margin: 20px 0 20px 0; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 900; color: #333333;">STANDARD - MONTH</h5>
+                                          <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; margin-bottom: 10px;">500,000원/월</h4>
+                                          <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-size: 16px; margin-bottom: 50px; color: #333333;">(월납)</h4>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">동시 시험 응시자 200명</p>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">약정기간 1년</p>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">부가세 별도</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div style="margin: 0 10px 0 10px; padding: 30px 0 30px 0; box-shadow: 3px 10px 40px rgba(0, 0, 0, 0.1); border-radius: 30px;">
+                                        <img src="images/male.png" alt="2" style="width:10%;">
+                                          <h5 style="margin: 20px 0 20px 0; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 900; color: #333333;">STANDARD - YEAR</h5>
+                                          <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; margin-bottom: 10px;">5,500,000원/년</h4>
+                                          <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-size: 16px; margin-bottom: 50px; color: #333333;">(1년 선납)</h4>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">동시 시험 응시자 200명</p>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">약정기간 1년</p>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">부가세 별도</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <div style="margin: 0 10px 0 10px; padding: 30px 0 30px 0; box-shadow: 3px 10px 40px rgba(0, 0, 0, 0.1); border-radius: 30px;">
+                                        <img src="images/female.png" alt="3" style="width:10%;">
+                                          <h5 style="margin: 20px 0 20px 0; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 900; color: #333333;">ONE - TEST</h5>
+                                          <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; margin-bottom: 10px;">700,000원</h4>
+                                          <h4 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-size: 16px; margin-bottom: 50px; color: #333333;">(시험 1회)</h4>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">동시 시험 응시자 200명</p>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;" >시험 1건 단일 상품</p>
+                                          <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868;">부가세 별도</p>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row pay">
+                        <div class="col-md-12">
+                          <a class="btn-success" href="#contact" style="display: inline-block; font-family: 'Noto Sans KR', sans-serif; font-size: 15px; border-radius: 10px; color: white; width: 125px; height: 50px; vertical-align:middle; line-height:50px; text-decoration:none;">구매 신청하기</a>
+                        </div>
+                    </div>
+        </section>
+        <section id="contact" style="padding:100px 0 250px 0">
+                      <div class="container">
+                        <div class="row contact">
+                          <div class="col-md-6">
+                              <h2 style="margin-bottom: 20px; font-family: 'Noto Sans KR', sans-serif; font-weight: 900; font-size: 35px;">문의하기</h2>
+                                  <p style="font-family: 'Noto Sans KR', sans-serif; color: #686868; font-size: 20px;">전문적인 컨설팅을 받고 싶거나 전체 제안서<br/>를 받고 싶은 분은 오른편에 정보를 기재하<br/>고 신청 버튼을 눌러주세요.</p>
+                          </div>
+                          <div class="col-md-6">
+                              <form action="#contact" method="post">
+
+                                <div class="row" style="margin-bottom: 20px;">
+                                  <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 0 auto 0 0;">
+
+                                        <label class="contact-btn btn btn-secondary active rounded-pill" style="">
+                                        <input name="contactType" type="radio" value="사업제휴" checked> 사업제휴
+                                        </label>
+                                        <label class="contact-btn btn btn-secondary rounded-pill" style="margin-left: 10px;">
+                                        <input name="contactType" type="radio" value="견적문의"> 견적문의
+                                        </label>
+
+                                        <label class="contact-btn btn btn-secondary rounded-pill" style="margin-left: 10px;">
+                                        <input name="contactType" type="radio" value="데모요청"> 데모요청
+                                        </label>
+
+                                      </div>
+
+                                </div>
+                                  <div class="form-group">
+                                      <input type="text" name="contactName" class="form-control" placeholder="이름" style="border-radius: 10px; height: 44px; font-family: 'Noto Sans KR', sans-serif;" value="">
+
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" name="contactCompany" class="form-control" placeholder="회사명" style="border-radius: 10px; height: 44px; font-family: 'Noto Sans KR', sans-serif;" value="">
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" name="contactEmail" class="form-control" placeholder="이메일" style="border-radius: 10px; height: 44px; font-family: 'Noto Sans KR', sans-serif;" value="">
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="text" name="contactPhone" class="form-control" placeholder="연락처" style="border-radius: 10px; height: 44px; font-family: 'Noto Sans KR', sans-serif;" value="">
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="submit" class="btn btn-success form-control" value="신청하기" style="border-radius: 10px; height: 44px; font-family: 'Noto Sans KR', sans-serif;">
+                                  </div>
+                              </form>
+                          </div>
+                        </div>
+                      </div>
+                  </section>
+
+          </main>
+          <!-- Footer -->
+          <footer class="py-4">
+            <div class="container">
+
+                     <div class="row footer-bottom-area">
+
+                      <div class="col-lg-2 col-md-3 col-sm-12 col-12">
+                          <div class="logo-elimnet">
+          					<a href="http://elim.net/" target="_blank"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor"></a>
+          				</div>
+                      </div>
+
+                      <div class="col-lg-10 col-md-10 col-sm-12 col-12">
+                          <div class="address" style="font-size: 10px; color:grey;">
+          					<p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">(주)엘림넷  ㅣ  대표이사 : 한환희  ㅣ  사업자등록번호 : 220-81-97656  ㅣ  통신판매업 신고번호 : 서대문 제2-02666호
+          주소 : 120 - 837 서울시 서대문구 충정로3가 32-11 엘림넷 빌딩  ㅣ  TEL : 02-3149-4832  ㅣ  FAX : 02-3149-4998  ㅣ  EMAIL : vidyokorea@elim.net
+                     			</p>
+          					<p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">Copyright(c) 2018 by ELIM.NET Co.,Ltd. All rights reserved.</p>
+          				</div>
+                      </div>
+
+
+                 </div>
+            </div>
+            <!-- /.container -->
+          </footer>
+    </body>
+    <script>
+    $(document).ready(function() {
+      @if(Session::get('created'))
+        $('#success').modal();
+      @endif
+
+
+      function clickedTopMenu (){
+        console.log("called here");
+        var me = $(this);
+        $('html, body').animate({
+          scrollTop: $(me.attr('href')).offset().top
+        }, 500);
+      };
+
+      $("a.nav-link").on('click', clickedTopMenu);
+
+
+    });
+    </script>
+    <div class="modal" tabindex="-1" role="dialog" id="success">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content border-0">
+          <div class="modal-body">
+            <p>문의가 완료 되었습니다.</p>
+          </div>
+          <div class="modal-footer border-0">
+                <button type="button" id="understand" class="btn btn-dark rounded-pill" data-dismiss="modal">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</html>

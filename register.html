@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>nownproctor</title>
+    <link rel="shortcut icon" href="images/nownproctor.ico">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      footer{
+        background-color: white;
+      }
+    </style>
+</head>
+<body>
+    <div id="app">
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
+          <div class="container">
+              <a class="navbar-brand" href="platform.html" style="color:#EC5C24; font-weight: bold; font-size: 25px; font-family: 'Noto Sans KR', sans-serif;"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor">
+                  <!--{{ config('app.name', 'nownproctor') }}-->
+              </a>
+              <button class="navbar-toggler" type="button" style="border: 0;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <!-- Left Side Of Navbar -->
+                  <ul class="navbar-nav mr-auto">
+
+                  </ul>
+
+                  <!-- Right Side Of Navbar -->
+                  <ul class="navbar-nav ml-auto">
+                      <!-- Authentication Links -->
+                          <li class="nav-item">
+                              <a class="nav-link" href="login.html" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px;">Login</a>
+                          </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="register.html" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px;">Register</a>
+                              </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+        <main class="pt-4 d-flex">
+
+
+              <div class="container" style="max-width: 100%; background-color: white; min-height: 100vh" id="content_container">
+<style type="text/css">
+  input[type='text']:focus{
+  border-color: #EE5600;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+
+  input[type='email']:focus{
+  border-color: #EE5600;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+
+  input[type='password']:focus{
+  border-color: #EE5600;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+
+  input[type='password-confirm']:focus{
+  border-color: #EE5600;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+</style>
+
+<div class="container" style="margin-top: 180px; margin-bottom: 180px;">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="box row" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 20px; background-color: white;" >
+
+                <div class="box-header col-md-4 text-md-right" style="color:#EC5C24; padding: 40px 40px 40px 40px; font-size: 30px; font-family: 'Roboto', sans-serif; font-weight: bold;">Register</div>
+
+                <div class="box-body col-md-8" style="padding: 40px 40px 40px 40px;">
+                    <form method="POST" action="submit.html">
+                        <div class="form-group row" style="margin-bottom: 8px;">
+                            <label for="name" class="col-md-9 col-form-label text-md-left" style="font-family: 'Noto Sans KR', sans-serif;">이름</label>
+
+                            <div class="col-md-10">
+                                <input id="name" type="text" class="form-control rounded-0 border-top-0 border-left-0 border-right-0" name="name" value="" required autocomplete="name" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom: 8px;">
+                            <label for="email" class="col-md-9 col-form-label text-md-left" style="font-family: 'Noto Sans KR', sans-serif;">이메일</label>
+
+                            <div class="col-md-10">
+                                <input id="email" type="email" class="form-control rounded-0 border-top-0 border-left-0 border-right-0" name="email" value="" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom: 8px;">
+                            <label for="password" class="col-md-9 col-form-label text-md-left" style="font-family: 'Noto Sans KR', sans-serif;">비밀번호</label>
+
+                            <div class="col-md-10">
+                                <input id="password" type="password" class="form-control rounded-0 border-top-0 border-left-0 border-right-0" name="password" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom: 30px;">
+                            <label for="password-confirm" class="col-md-9 col-form-label text-md-left" style="font-family: 'Noto Sans KR', sans-serif;">비밀번호 확인</label>
+
+                            <div class="col-md-10">
+                                <input id="password-confirm" type="password" class="form-control rounded-0 border-top-0 border-left-0 border-right-0" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-9 text-md-4">
+                                <button type="submit" class="btn btn-primary rounded-0 border-light" style="background-color: #EC5C24; font-family: 'Noto Sans KR', sans-serif;">회원가입
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</main>
+<!-- Footer -->
+<footer class="py-4">
+    <div class="container">
+
+             <div class="row footer-bottom-area">
+
+              <div class="col-lg-2 col-md-3 col-sm-12 col-12">
+                  <div class="logo-elimnet">
+                      <a href="http://elim.net/" target="_blank"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor"></a>
+                  </div>
+              </div>
+
+              <div class="col-lg-10 col-md-10 col-sm-12 col-12">
+                  <div class="address" style="font-size: 10px; color:grey;">
+                      <p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">(주)엘림넷  ㅣ  대표이사 : 한환희  ㅣ  사업자등록번호 : 220-81-97656  ㅣ  통신판매업 신고번호 : 서대문 제2-02666호
+  주소 : 120 - 837 서울시 서대문구 충정로3가 32-11 엘림넷 빌딩  ㅣ  TEL : 02-3149-4832  ㅣ  FAX : 02-3149-4998  ㅣ  EMAIL : vidyokorea@elim.net
+                         </p>
+                      <p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">Copyright(c) 2018 by ELIM.NET Co.,Ltd. All rights reserved.</p>
+                  </div>
+              </div>
+
+
+         </div>
+    </div>
+    <!-- /.container -->
+  </footer>
+</div>
+</body>
+</html>

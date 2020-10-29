@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>nownproctor</title>
+    <link rel="shortcut icon" href="images/nownproctor.ico">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="app">
+      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow-sm">
+          <div class="container">
+              <a class="navbar-brand" href="#" style="color:#EC5C24; font-weight: bold; font-size: 25px; font-family: 'Noto Sans KR', sans-serif;"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor">
+                  <!--{{ config('app.name', 'nownproctor') }}-->
+              </a>
+              <button class="navbar-toggler" type="button" style="border: 0;" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <!-- Left Side Of Navbar -->
+                  <ul class="navbar-nav mr-auto">
+
+                  </ul>
+
+                  <!-- Right Side Of Navbar -->
+                  <ul class="navbar-nav ml-auto">
+                          <li class="nav-item dropdown">
+                              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  사용자 이름<span class ="caret"></span>
+                              </a>
+
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="platform.html"
+                                     onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                      Logout
+                                  </a>
+
+                                  <form id="logout-form" action="platform.html" method="POST" style="display: none;">
+
+                                  </form>
+                              </div>
+                          </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+        <main class="d-flex" style="padding-top:66px; position: relative;">
+          <style type="text/css">
+            .wrapper {
+              display: flex;
+
+            }
+
+            #sidebar {
+              min-width: 200px;
+              max-width: 200px;
+              height: calc(100vh - 66px);
+              background-color: #FFFFFF;
+              position: fixed;
+              top: 66px;
+              left: 0;
+              box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+              padding-top: 20px;
+            }
+
+            #sidebar.active {
+              margin-left: -200px;
+            }
+            /*a[data-toggle="collapse"] {
+                position: relative;
+            }
+
+            .dropdown-toggle::after {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+            }*/
+            @media (max-width: 768px) {
+              #sidebar {
+                  /*margin-left: -250px;*/
+                  min-height: 0;
+                  top:10px;
+                  height: 25vh !important;
+                  position: relative !important;
+                  width: 100% !important;
+                  max-width:100% !important;
+                  overflow-y: auto;
+                  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0);
+              }
+              #sidebar.active {
+                  margin-left: 0;
+              }
+              #content_container{
+                padding: 0 !important;
+              }
+              .d-flex{
+                flex-direction: column !important;
+              }
+              .overlay{
+                width: 100% !important;
+              }
+          }
+          @media (max-width: 960px){
+            #content_container{
+              padding-right: 0 !important;
+            }
+          }
+          @media (max-width: 1280px){
+            #content_container{
+              padding-right: 0 !important;
+            }
+          }
+          body {
+              font-family: 'Noto Sans KR', sans-serif;
+              background: #fafafa;
+          }
+
+          p {
+              font-family: 'Noto Sans KR', sans-serif;
+              font-size: 1.1em;
+              line-height: 1.7em;
+              color: #EE5600;
+          }
+
+          a, a:hover, a:focus {
+              color: inherit;
+              text-decoration: none;
+              transition: all 0.3s;
+          }
+
+          #sidebar {
+              /* don't forget to add all the previously mentioned styles here too */
+
+              color: #EE5600;
+              transition: all 0.3s;
+          }
+
+          #sidebar .sidebar-header {
+              padding: 20px 20px 20px 20px;
+              height: 55px;
+              margin-bottom: 0px;
+              font-style: normal;
+              font-weight: bold;
+          }
+
+          #sidebar ul.components {
+              padding: 0 0 0 0;
+              border-bottom: 1px #EE5600
+          }
+
+          #sidebar ul p {
+              color: #EE5600;
+              padding: 10px 0 10px; 0;
+              margin-bottom: 0px;
+              height: 45px;
+          }
+
+          #sidebar ul li a {
+              padding: 10px 20px 10px 30px;
+              font-size: 15px;
+              display: block;
+              font-family: 'Noto Sans KR', sans-serif;
+              font-style: normal;
+              font-weight: bold;
+              color: #EE5600;
+          }
+
+          #sidebar ul li a:hover {
+              color: #FFFFFF;
+              background: rgba(238, 86, 0, 0.5);
+          }
+
+          #sidebar ul li.active > a, a[aria-expanded="true"] {
+              color: #A6A6A6;
+              font-size: 15px;
+          }
+
+          #sidebar ul li.active a:hover {
+              color: #FFFFFF;
+              background: rgba(238, 86, 0, 0.5);
+          }
+
+          ul ul a {
+              font-size: 0.9em !important;
+              padding-left: 30px !important;
+          }
+
+          .description {
+              font-size: 12px;
+          }
+
+          .test {
+              color: #7E7E7E;
+          }
+
+          #sidebar ul li.active a:hover .test {
+              color: #FFFFFF;
+          }
+
+          .btn-danger.remove_proctor:focus{
+            border-color:transparent;
+          }
+          .btn-danger.remove-part:focus{
+            border-color:transparent;
+          }
+          .overlay{
+            width: calc(100% - 200px);
+            height:calc(100% - 66px);
+            position: absolute;
+            z-index:1;
+            background-color: black;
+            opacity: 0.5
+          }
+
+          </style>
+
+          <script type="text/javascript">
+          $(document).ready(function () {
+
+            /*$("#sidebar").mCustomScrollbar({
+                 theme: "minimal"
+            });*/
+
+            $('#sidebarCollapse').on('click', function () {
+                // open or close navbar
+                $('#sidebar').toggleClass('active');
+                // close dropdowns
+                $('.collapse.in').toggleClass('in');
+                // and also adjust aria-expanded attributes we use for the open/closed arrows
+                // in our CSS
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
+          });
+          </script>
+
+          <div class="wrapper">
+              <!-- Sidebar -->
+              <nav id="sidebar">
+
+                  <div id="dismiss">
+                      <i class="fas fa-arrow-left"></i>
+                  </div>
+
+                  <ul class="list-unstyled components">
+                      <li>
+                        <a style="padding-left:20px;" href="submit.html">
+                          <svg fill="none" style="width: 20px; height: 20px; margin-right:13px; ">
+                              <path
+                              d="M9.934 9.934v7.283H8.167V9.934H.883V8.167h7.284V.883h1.767v7.284h7.283v1.767H9.934z"
+                              fill="#EE5600"/>
+                          </svg>일정 생성</a>
+                      </li>
+
+                      <div class="sidebar-header" style="height: 45px; padding-top: 10px; padding-bottom: 10px;">
+                          <svg fill="none" style="width: 30px; height: 25px">
+                              <path
+                              d="M18.54 1.64h-.985V0h-1.64v1.64H5.084V0h-1.64v1.64h-.984A2.464 2.464 0 000 4.103v14.437A2.464 2.464 0 002.46 21h16.08A2.464 2.464 0 0021 18.54V4.101a2.464 2.464 0 00-2.46-2.461zm.82 16.9c0 .451-.369.82-.82.82H2.46a.821.821 0 01-.82-.82V7.71h17.72v10.83zm0-12.47H1.64V4.102c0-.453.369-.82.82-.82h.985v1.64h1.64v-1.64h10.83v1.64h1.64v-1.64h.984c.452 0 .82.367.82.82V6.07z"
+                              fill="#EE5600"/>
+                              <path
+                              d="M4.758 9.434h-1.64v1.64h1.64v-1.64zM8.04 9.434H6.397v1.64H8.04v-1.64zM11.32 9.434H9.68v1.64h1.64v-1.64zM14.602 9.434H12.96v1.64h1.64v-1.64zM17.883 9.434h-1.64v1.64h1.64v-1.64zM4.758 12.715h-1.64v1.64h1.64v-1.64zM8.04 12.715H6.397v1.64H8.04v-1.64zM11.32 12.715H9.68v1.64h1.64v-1.64zM14.602 12.715H12.96v1.64h1.64v-1.64zM4.758 15.996h-1.64v1.64h1.64v-1.64zM8.04 15.996H6.397v1.64H8.04v-1.64zM11.32 15.996H9.68v1.64h1.64v-1.64zM14.602 15.996H12.96v1.64h1.64v-1.64zM17.883 12.715h-1.64v1.64h1.64v-1.64z"
+                              fill="#EE5600"/>
+                          </svg>
+                          <span>테스트 일정</span>
+                      </div>
+                      <li class="active">
+
+                          <a href="detail.html" >
+
+                            <span class="test">시험 타이틀</span>
+
+                          <ul class="list-unstyled" id="scheduleSubmenu">
+                              <li>
+                                  <span class="description">시험 스케쥴</span>
+                              </li>
+                              <li>
+                                  <span class="description">일정 상태</span>
+                              </li>
+                          </ul>
+                          </a>
+                      </li>
+                  </ul>
+              </nav>
+
+              <!-- Page Content -->
+
+              <!-- Dark Overlay element -->
+              <div class="overlay??"></div>
+          </div>
+          <!-- jQuery Custom Scroller CDN -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+          <!-- Scrollbar Custom CSS -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+
+              <div class="container" style="max-width: 100%; padding: 0 0 0 200px; min-height: calc(100vh - 66px);" id="content_container">
+<style type="text/css">
+  .nomarginleft{
+    margin-left: 0;
+  }
+  .nomargin{
+    margin: 0;
+  }
+  .nopadding{
+    padding: 0;
+  }
+  .buttonText{
+    color: #EE5600;
+    font-size: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  .bottomButton{
+    text-align: center;
+    font-size: 10px;
+    height: 20px;
+    width: 20px;
+  }
+  .bottomButton.btn-success{
+    background-color: #EE5600;
+    border-color: #EE5600;
+  }
+  .bottomButton.btn-danger{
+    background-color: #B5B5B5;
+    border-color: #B5B5B5;
+  }
+
+  .marginbottom{
+    margin-bottom: 5px;
+  }
+
+  .subpadding{
+    padding: 0 5px 0 0;
+  }
+
+  .togglable{
+    display: none;
+  }
+
+  input[type='text']:focus{
+  border-color: #EE5600;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+
+  input[type='datetime-local']:focus{
+  border-color: #EE5600;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+
+  button[type='button']:focus{
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+  }
+
+  .modal-content{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
+
+  .modal-header{
+    padding: 30px 50px 0 50px;
+  }
+
+  .modal-title{
+    color: #343a40;
+    font-size: 20px;
+  }
+
+  .modal-body{
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 15px;
+  }
+
+  .modal-body p{
+    color: #343a40;
+  }
+
+  .modal-footer{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding: 0 50px 30px 50px;
+  }
+
+.remove-done{
+  color: rgb(255, 255, 255);
+  float: right;
+  z-index: 2;
+  position: relative;
+}
+
+.svg-add{
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  content: "";
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23EE5600" class="bi bi-plus-circle-fill" viewBox="0 0 16 16" height="1.5em" width="1.5em"><path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"></path></svg>');
+  background-size: 1rem 1rem;
+  background-repeat: no-repeat;
+}
+
+.svg-remove{
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  content: "";
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23EE5600" class="bi bi-dash-circle-fill" viewBox="0 0 16 16" height="1.5em" width="1.5em"><path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 7.5a.5.5 0 0 0 0 1h8a.5.5 0 0 0 0-1H4z"></path></svg>');
+  background-size: 1rem 1rem;
+  background-repeat: no-repeat;
+
+}
+
+.add_proctor{
+  background-color: white;
+  border-color: transparent;
+  height: 1rem;
+  width: 1rem;
+  line-height: 1rem;
+  box-sizing: content-box;
+}
+
+
+.importError{
+  display: none;
+}
+.importSuccess{
+  display: none;
+}
+
+
+.toggle-button {
+  margin: 0; }
+
+/*
+ * Toggle button styles
+ */
+.toggle-button {
+  position: relative;
+  color: #fff; }
+  .toggle-button label {
+    display: inline-block;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: left; }
+  .toggle-button input {
+    display: none; }
+  .toggle-button__icon {
+    cursor: pointer;
+    pointer-events: none; }
+    .toggle-button__icon:before, .toggle-button__icon:after {
+      content: "";
+      position: absolute;
+      top: 45%;
+      left: 35%;
+      transition: 0.2s ease-out; }
+/*
+ * Toggle button variables
+ */
+/*
+ * Toggle button styles
+ */
+.toggle-button--tuli label {
+  height: 20px;
+  width: 20px;
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+
+.toggle-button--tuli input[type=checkbox]:checked ~ .toggle-button__icon { }
+  .toggle-button--tuli input[type=checkbox]:checked ~ .toggle-button__icon:before, .toggle-button--tuli input[type=checkbox]:checked ~ .toggle-button__icon:after {
+    opacity: 1; }
+
+.toggle-button--tuli .toggle-button__icon {
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s;
+  border: 2px solid #fff;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1); }
+  .toggle-button--tuli .toggle-button__icon:before, .toggle-button--tuli .toggle-button__icon:after {
+    top: 5px;
+    left: 2px;
+    width: 12px;
+    height: 2px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    top: 35%;
+    background: #fff;
+    opacity: 0;
+    transform-origin: left center; }
+  .toggle-button--tuli .toggle-button__icon:before {
+    transform: translate(0, 0) rotate(45deg) scale(0.6, 1); }
+  .toggle-button--tuli .toggle-button__icon:after {
+    transform: translate(4px, 6px) rotate(-45deg); }
+
+.toggle-button--tuli:hover input[type=checkbox]:not(:checked) ~ .toggle-button__icon {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+
+  div.input-group.removeSelected .col-md-11.nopadding:before, .proctor_list.removeSelected .row.nomargin .col-md-11.nopadding:before{
+    content:"";
+    outline: 1px solid white;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    top: calc(100% - 6px);
+  }
+
+</style>
+
+<div class="container" style="padding: 0 15px 0 15px;">
+
+
+  <div class="container" style="background-color:white; border-radius: 10px; box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1); margin: 20px 0 20px 0;">
+    <div class="row justify-content-center" style="margin-left: 0px; padding: 50px 50px 50px 50px; margin-right: 0px; ">
+      <h1 style="margin-bottom: 50px; font-size: 27px; color: #EC5C24; font-weight: bold;">온라인 시험 스케쥴</h1>
+    </div>
+
+    <div class="row justify-content-center nomargin" style="padding-bottom: 50px;">
+      <div class="col-md-9" style="padding: 0 0 30px 0;">
+        <p style="color:#000">아래 버튼을 클릭하여 CSV 파일을 불러오세요</p>
+        <label for="csv_file" style="background-color: #EC5C24; color:#fff; padding:4px; border-radius:4px;" >CSV 불러오기</label>
+        <input id="csv_file" type="file" class="form-control" name="csv_file" style="visibility:hidden" required>
+        <div class="importError" style="color:red;">파일 임포트 실패하였습니다.</div>
+        <div class="importSuccess" style="color:green;">파일 임포트 성공하였습니다.</div>
+      </div>
+        <form action="detail.html#success" method="post" class="col-md-9">
+          <div class="form_group" style="margin-bottom: 16px;">
+            <label for="title">제목</label>
+            <div class="row">
+              <div class="col-md-11">
+                  <input type="text" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" id="title" name="title" placeholder="Title" value="">
+              </div>
+              <div class="col-md-1">
+
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="schedule">스케쥴</label>
+            <div class="row">
+              <div class="col-md-11">
+                <input type="datetime-local" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" id="schedule" name="schedule" value="">
+              </div>
+              <div class="col-md-1">
+
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="participant_list">
+
+              <div class="proctor_list">
+                <label>감독관</label>
+                <div class="row nomargin">
+                  <div class="col-md-11 nopadding">
+                    <div class="row nomargin">
+                      <div class="col-md-6 subpadding">
+                        <input type="text" name="proctor[{{$id}}]" class="form-control rounded-0 proctor_name border-top-0 border-left-0 border-right-0 marginbottom" placeholder="감독관 이름" value="" required />
+                      </div>
+                      <div class="col-md-6 nopadding">
+                        <input type="text" name="proctor_email[{{$id}}]" class="form-control rounded-0 proctor_email border-top-0 border-left-0 border-right-0 marginbottom" placeholder="감독관 이메일" value="" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 nopadding" style=" text-align:center; line-height: 30px;">
+                    <div class="toggle-button toggle-button--tuli togglable">
+                        <input id="proctor_toggle{{$id}}" type="checkbox">
+                        <label for="proctor_toggle{{$id}}" class="remove_proctor"></label>
+                        <div class="toggle-button__icon"></div>
+                    </div>
+                  </div>
+                </div>
+                <label style="margin-top: 8px;">응시자</label>
+                   <div class="input-group row nomarginleft">
+                     <div class="col-md-11 nopadding">
+                       <div class="row nomargin">
+                         <div class="col-md-4 subpadding">
+                           <input type="text" name="participant_name[{{$id}}][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="이름" value="" />
+                         </div>
+                         <div class="col-md-4 subpadding">
+                           <input type="text" name="participant_email[{{$id}}][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="이메일" value="" />
+                         </div>
+                         <div class="col-md-4 subpadding">
+                           <input type="text" name="participant_phone[{{$id}}][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="전화번호" value="" />
+                         </div>
+                       </div>
+                     </div>
+                     <div class="col-md-1 nopadding" style=" text-align:center; line-height: 30px;">
+                       <div class="toggle-button toggle-button--tuli togglable">
+                           <input id="participant_toggle{{$id.$pid}}" type="checkbox">
+                           <label for="participant_toggle{{$id.$pid}}" class="remove-part"></label>
+                           <div class="toggle-button__icon"></div>
+                       </div>
+                     </div>
+                   </div>
+              <div class="cold-md-3">
+                <button type="button" name="add" class="btn add" style=" color: #EE5600;">
+                  <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;">
+                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"></path>
+                    <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"></path>
+                  </svg>추가
+                </button>
+                <button type="button" name="remove" class="btn btn remove" style="font: 7px; color: #343a40; float: right;">
+                  <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary rounded-pill border-light col-md-11" style="background-color:#EC5C24;">Submit</button>
+        </form>
+      </div>
+  </div>
+</div>
+
+  <script>
+    $(document).ready(function(){
+      $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+      });
+
+      var count = $('.proctor_list').first().find('.remove_proctor').length ? $('.proctor_list').first().find(".toggle-button--tuli").first() : null;
+
+       if(count){
+         $(count).before('<button type="button" name="add" class="btn btn-success add_proctor rounded-circle togglable_rev nopadding"><span class="svg-add"></span></button>');
+       }else{
+        $('.participant_list').prepend(dynamicProctor(0));
+       }
+
+       function dynamicParticipant(proctor_id, participant_id){
+         html = '<div class="input-group row nomarginleft">';
+          html += '<div class="col-md-11 nopadding">';
+            html += '<div class="row nomargin">';
+              html += '<div class="col-md-4 subpadding">';
+                html += '<input type="text" name="participant_name['+proctor_id+'][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="응시자 이름" />';
+              html += '</div>';
+              html += '<div class="col-md-4 subpadding">';
+                html += '<input type="text" name="participant_email['+proctor_id+'][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="응시자 이메일" />';
+              html += '</div>';
+              html += '<div class="col-md-4 subpadding">';
+                html += '<input type="text" name="participant_phone['+proctor_id+'][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="응시자 전화번호" />';
+              html += '</div>';
+            html += '</div>';
+          html += '</div>';
+          html += '<div class="col-md-1 nopadding" style="text-align:center; line-height: 30px;">';
+            html += '<div class="toggle-button toggle-button--tuli togglable">';
+                html += '<input id="participant_toggle'+proctor_id+'_'+participant_id+'" type="checkbox">';
+                html += '<label for="participant_toggle'+proctor_id+'_'+participant_id+'" class="remove-part"></label>';
+                html += '<div class="toggle-button__icon"></div>';
+            html += '</div>';
+          html += '</div>';
+        html += '</div>';
+        return html;
+       }
+
+       function dynamicProctor(proctor_id){
+         html = '<div class="proctor_list" style="margin-bottom: 50px;">';
+          html += '<label>감독관</label>';
+          html += '<div class="row nomargin">';
+            html += '<div class="col-md-11 nopadding">';
+              html += '<div class="row nomargin">';
+                html += '<div class="col-md-6 subpadding">';
+                  html += '<input type="text" name="proctor['+proctor_id+']" class="form-control rounded-0 proctor_name border-top-0 border-left-0 border-right-0 marginbottom" placeholder="감독관 이름" required />';
+                html += '</div>';
+                html += '<div class="col-md-6 nopadding">';
+                  html += '<input type="text" name="proctor_email['+proctor_id+']" class="form-control rounded-0 proctor_email border-top-0 border-left-0 border-right-0 marginbottom" placeholder="감독관 이메일" required />';
+                html += '</div>';
+              html += '</div>';
+            html += '</div>';
+            html += '<div class="col-md-1 nopadding" style=" text-align:center; line-height: 30px;">';
+              html += '<button type="button" name="add" class="btn btn-success add_proctor rounded-circle togglable_rev nopadding"><span class="svg-add"></span></button>';
+              html += '<div class="toggle-button toggle-button--tuli togglable">';
+                  html += '<input id="proctor_toggle'+proctor_id+'" type="checkbox">';
+                  html += '<label for="proctor_toggle'+proctor_id+'" class="remove_proctor"></label>';
+                  html += '<div class="toggle-button__icon"></div>';
+              html += '</div>';
+            html += '</div>';
+          html += '</div>';
+          html += '<label style="margin-top: 8px;">응시자</label>'+dynamicParticipant(proctor_id, 0);
+          html += '<div class="cold-md-3">';
+            html += '<button type="button" name="add" class="btn add" style=" color: #EE5600;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;"><path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"></path><path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"></path></svg>추가</button>';
+          html +=   '<button type="button" name="remove" class="btn btn remove" style="font: 7px; color: #343a40; float:right;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg></button>';
+          html += '</div>';
+        html += '</div>';
+        return html;
+       }
+
+       function importProctor(proctor_id, obj, key){
+         html = '<div class="proctor_list" style="margin-bottom: 50px;">';
+          html += '<label>감독관</label>';
+          html += '<div class="row nomargin">';
+            html += '<div class="col-md-11 nopadding">';
+              html += '<div class="row nomargin">';
+                html += '<div class="col-md-6 subpadding">';
+                  html += '<input type="text" name="proctor[import'+proctor_id+']" class="form-control rounded-0 proctor_name border-top-0 border-left-0 border-right-0 marginbottom" placeholder="감독관 이름" value="' + key + '" required />';
+                html += '</div>';
+                html += '<div class="col-md-6 nopadding">';
+                  html += '<input type="text" name="proctor_email[import'+proctor_id+']" class="form-control rounded-0 proctor_email border-top-0 border-left-0 border-right-0 marginbottom" placeholder="감독관 이메일" value="' + obj[key]['email'] + '" required />';
+                html += '</div>';
+              html += '</div>';
+            html += '</div>';
+            html += '<div class="col-md-1 nopadding" style=" text-align:center; line-height: 30px;">';
+              html += '<div class="toggle-button toggle-button--tuli togglable">';
+                  html += '<input id="proctor_toggle'+proctor_id+'" type="checkbox">';
+                  html += '<label for="proctor_toggle'+proctor_id+'" class="remove_proctor"></label>';
+                  html += '<div class="toggle-button__icon"></div>';
+              html += '</div>';
+            html += '</div>';
+          html += '</div>';
+          html += '<label style="margin-top: 8px;">응시자</label>';
+          obj[key]['participant'].forEach((item, i) => {
+            html += importParticipant(proctor_id, item, i);
+          });
+          html += '<div class="cold-md-3">';
+            html += '<button type="button" name="add" class="btn add" style=" color: #EE5600;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;"><path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"></path><path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"></path></svg>추가</button>';
+          html +=   '<button type="button" name="remove" class="btn btn remove" style="font: 7px; color: #343a40; float:right;"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg></button>';
+          html += '</div>';
+        html += '</div>';
+        return html;
+       }
+
+       function importParticipant(proctor_id, item, participant_id){
+         html = '<div class="input-group row nomarginleft">';
+          html += '<div class="col-md-11 nopadding">';
+            html += '<div class="row nomargin">';
+              html += '<div class="col-md-4 subpadding">';
+                html += '<input type="text" name="participant_name[import'+proctor_id+'][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="응시자 이름" value="' + item[0] + '" />';
+              html += '</div>';
+              html += '<div class="col-md-4 subpadding">';
+                html += '<input type="text" name="participant_email[import'+proctor_id+'][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="응시자 이메일" value="' + item[1] + '" />';
+              html += '</div>';
+              html += '<div class="col-md-4 nopadding">';
+                html += '<input type="text" name="participant_phone[import'+proctor_id+'][]" class="form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="응시자 전화번호" value="' + item[2] + '" />';
+              html += '</div>';
+            html += '</div>';
+          html += '</div>';
+          html += '<div class="col-md-1 nopadding" style="text-align:center; line-height: 30px;">';
+            html += '<div class="toggle-button toggle-button--tuli togglable">';
+                html += '<input id="participant_toggle'+proctor_id+'_'+participant_id+'" type="checkbox">';
+                html += '<label for="participant_toggle'+proctor_id+'_'+participant_id+'" class="remove-part"></label>';
+                html += '<div class="toggle-button__icon"></div>';
+            html += '</div>';
+          html += '</div>';
+        html += '</div>';
+        return html;
+       }
+
+
+       $(document).on('click', '.add', function(){
+        //count++;
+        if($(this).closest('.proctor_list').find('.input-group').length > 15){
+
+        }else{
+          proctor_id = $(this).closest('.proctor_list').find('.proctor_name').prop('name');
+          proctor_id = proctor_id.substring(8, proctor_id.length-1);
+          $(this).before(dynamicParticipant(proctor_id, $(this).closest('.proctor_list').find('.input-group').length));
+        }
+
+       });
+       $(document).on('click', '.add_proctor', function(){
+         proctor_id = $(this).closest('.proctor_list').find('.proctor_name').prop('name');
+         if (proctor_id.substring(8, 9) === "i"){
+           proctor_id = 0;
+         }else{
+           proctor_id = proctor_id.substring(8, proctor_id.length-1);
+         }
+         proctor_id = +proctor_id + 1;
+         $('.participant_list').prepend(dynamicProctor(proctor_id));
+         //$(this).replaceWith('<button type="button" name="remove" class="btn btn-danger remove_proctor rounded-circle nopadding togglable" style="text-align: center;font-size: 10px;height: 20px;width: 20px; background-color: #EE5600; border-color: #EE5600;">-</button>');
+         $(this).remove();
+       });
+
+       $(document).on('click', '.remove_proctor', function(){
+         //count--;
+         //$(this).closest(".proctor_list").remove();
+         var clicks = $(this).data('clicks');
+         if(clicks){
+           $(this).closest('.proctor_list').removeClass('removeSelected');
+           $(this).closest('.proctor_list').find('.input-group.removeSelected').each(function() {
+             $(this).removeClass('removeSelected');
+             var clicks = $(this).find('.remove-part').data('clicks');
+             $(this).find('.remove-part').data('clicks', !clicks);
+             $(this).find('.remove-part').prev('input[type=checkbox]').prop('checked', false);//make it unchecked
+           });
+         }else{
+           $(this).closest('.proctor_list').addClass('removeSelected');
+           $(this).closest('.proctor_list').find('.input-group').not('.removeSelected').each(function() {
+             $(this).addClass('removeSelected');
+             var clicks = $(this).find('.remove-part').data('clicks');
+             $(this).find('.remove-part').data('clicks', !clicks);
+             $(this).find('.remove-part').prev('input[type=checkbox]').prop('checked', true);//make it checked
+           });
+         }
+         $(this).data('clicks', !clicks);
+
+       });
+
+      $(document).on('click', '.remove', function(){
+        //count--;
+        //$('main .container *').not('.togglable').css({'pointer-events': 'none'});
+                // Show the backdrop
+        $('main .container').first().prepend('<div class="overlay"></div>');
+        $('.togglable').css({'z-index':'2', 'position':'relative'});
+        $(this).css({'z-index':'2', 'position':'relative'});
+
+        // Remove it (later)
+        //$(".modal-backdrop").remove();
+        $(this).closest(".proctor_list").find('.togglable').toggle();
+        $(this).closest(".proctor_list").find('.togglable_rev').toggle();
+        $(this).removeClass('remove').addClass('remove-done');
+        $(this).css({color:'#FFFFFF'});
+        $(this).html('<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check2" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;"><path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path></svg>삭제');
+        $(this).parent().append('<button type="button" name="remove" id="" class="btn btn remove-cancel" style="font: 7px; color: #FFFFFF; float:right; position: relative; z-index: 2">'
+        +'<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;">'
+        +'<path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"></path>'
+        +'<path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"></path>'
+        +'</svg>취소</button>');
+        /*obj = $(this).closest(".proctor_list").find('.input-group');
+        if(obj.length > 1){
+          $(obj).last().remove();
+        }*/
+
+       });
+       $(document).on('click', '.remove-part', function(){
+         var clicks = $(this).data('clicks');
+         if(clicks){
+           $(this).closest('.input-group').removeClass('removeSelected');
+
+           $(this).closest('.proctor_list.removeSelected').find('.remove_proctor').prev('input[type=checkbox]').prop('checked', false);
+           $(this).closest('.proctor_list.removeSelected').find('.remove_proctor').data('clicks', false);
+           $(this).closest('.proctor_list.removeSelected').removeClass('removeSelected');
+         }else{
+           $(this).closest('.input-group').addClass('removeSelected');
+         }
+         $(this).data('clicks', !clicks);
+       });
+
+       $(document).on('click', '.remove-cancel', function(){
+         //undo both remove-part and .reomove
+         var parent = $(this).closest('.proctor_list');
+         $('.overlay').remove();
+         parent.removeClass('removeSelected');
+         parent.find('.input-group').removeClass('removeSelected');
+         //parent.find('.togglable').not('.remove_proctor').prev('input[type=checkbox]').prop('checked', false);//this selects remove_part, no idea why not just search .remove-part
+         parent.find('input[type=checkbox]').prop('checked', false);
+         parent.find('.togglable label').data('clicks', false);
+         parent.find('.togglable').toggle();
+         parent.find('.togglable_rev').toggle();
+         $('.remove-done').css({color:'#343a40'});
+         $('.remove-done').html('<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg>');
+         $('.remove-done').css({'z-index':'0', 'position':'relative'});
+         $('.remove-done').removeClass('remove-done').addClass('remove');
+         $(this).remove();
+       });
+
+       $(document).on('click', '.remove-done', function(){
+         //complete remove-part and undo .remove
+         var parent = $(this).closest('.proctor_list');
+         var th = this;
+         $('#confirm').modal();
+         $('#agree').off('click').on('click', function (e){
+           e.preventDefault();
+           parent.find('.togglable').toggle();
+           parent.find('.togglable_rev').toggle();
+           $('.removeSelected').remove();
+           $('.overlay').remove();
+           $('.remove-cancel').remove();
+           $(th).css({color:'#343a40'});
+           $(th).html('<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path></svg>');
+           $(th).css({'z-index':'0', 'position':'relative'});
+           $(th).removeClass('remove-done').addClass('remove');
+           //if upmost proctor_list or input_group be not available, add one. Also + button for proctor list.
+           if (document.contains(parent[0])){
+             if(!parent.find('.input-group').length){
+              var proctor_id = parent.find('.proctor_name').prop('name');
+              proctor_id = proctor_id.substring(8, proctor_id.length-1);
+              parent.find('.cold-md-3').before(dynamicParticipant(proctor_id, 0));
+             }
+           } else if (!$('.proctor_list').length) {
+             $('.participant_list').prepend(dynamicProctor(0));
+           } else if (!$('.proctor_list').first().find('.add_proctor').length) {
+             $('.proctor_list').first().find(".toggle-button--tuli").first().before('<button type="button" name="add" class="btn btn-success add_proctor rounded-circle togglable_rev nopadding"><span class="svg-add"></span></button>');
+           }
+         });
+       });
+
+       $(document).on('change', '#csv_file', function(){
+         var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv)$/;
+         if(regex.test($(this).val().toLowerCase())){
+           var reader = new FileReader();
+           var obj = {};
+           reader.onload = function(e){
+             var rows = e.target.result.split('\n');
+             rows.forEach((item, i) => {
+               var cols = item.split(',');
+               if(cols[0] !== ""){
+                 obj[cols[0]] = obj[cols[0]] || {};
+                 obj[cols[0]]['email'] = cols[1]
+                 let arr = obj[cols[0]]['participant'] || [];
+                 if(arr.length < 16){
+                   arr.push([cols[2], cols[3], cols[4]]);
+                   obj[cols[0]]['participant'] = arr;
+                 }
+               }
+             });
+             Object.keys(obj).forEach(key => {
+               proctor_id = $('.proctor_list').last().find('.proctor_name').prop('name');
+               if (proctor_id.substring(8, 14) === "import"){
+                proctor_id = proctor_id.substring(14, proctor_id.length-1);
+               }else{
+                 proctor_id = 0;
+               }
+               proctor_id = +proctor_id + 1;
+               $('.participant_list').append(importProctor(proctor_id, obj, key));
+               //$(this).replaceWith('<button type="button" name="remove" class="btn btn-danger remove_proctor rounded-circle nopadding togglable" style="text-align: center;font-size: 10px;height: 20px;width: 20px; background-color: #EE5600; border-color: #EE5600;">-</button>');
+             });
+            $('.importSuccess').show();
+            $('.importError').hide();
+            };
+           reader.readAsText($(this).prop('files')[0], 'euc-kr');
+         }else{
+            $('.importError').show();
+            $('.importSuccess').hide();
+         }
+       });
+
+    });
+  </script>
+
+  <div class="modal" tabindex="-1" role="dialog" id="confirm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content border-0">
+      <div class="modal-header border-0">
+        <p class="modal-title"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
+        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+      </svg>삭제 하겠습니까?</p>
+      </div>
+      <div class="modal-body">
+        <p>삭제된 내용은 복구할 수 없습니다.</p>
+      </div>
+      <div class="modal-footer border-0">
+      <div class="container">
+      <div class="row">
+      <div class="col-md-6" style="text-align:center;">
+            <button type="button" id="agree" class="btn btn-outline-dark rounded-pill" data-dismiss="modal" style="padding: 5px 60px 5px 60px;">적용</button>
+            </div>
+            <div class="col-md-6" style="text-align:center;">
+            <button type="button" id="cancel" class="btn btn-dark rounded-pill" data-dismiss="modal" style="padding: 5px 60px 5px 60px;">취소</button>
+            </div>
+            </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="py-4">
+  <div class="container">
+
+           <div class="row footer-bottom-area">
+
+            <div class="col-lg-2 col-md-3 col-sm-12 col-12">
+                <div class="logo-elimnet">
+					<a href="http://elim.net/" target="_blank"><img style="max-height:20px;" src="images/logo_nownproctor.png" alt="logo-nownproctor"></a>
+				</div>
+            </div>
+
+            <div class="col-lg-10 col-md-10 col-sm-12 col-12">
+                <div class="address" style="font-size: 10px; color:grey;">
+					<p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">(주)엘림넷  ㅣ  대표이사 : 한환희  ㅣ  사업자등록번호 : 220-81-97656  ㅣ  통신판매업 신고번호 : 서대문 제2-02666호
+주소 : 120 - 837 서울시 서대문구 충정로3가 32-11 엘림넷 빌딩  ㅣ  TEL : 02-3149-4832  ㅣ  FAX : 02-3149-4998  ㅣ  EMAIL : vidyokorea@elim.net
+           			</p>
+					<p style="color:grey; font-family: 'Noto Sans KR', sans-serif; font-size: 14px;">Copyright(c) 2018 by ELIM.NET Co.,Ltd. All rights reserved.</p>
+				</div>
+            </div>
+
+
+       </div>
+  </div>
+  <!-- /.container -->
+</footer>
+
+</div>
+
+</main>
+</div>
+</body>
+</html>
