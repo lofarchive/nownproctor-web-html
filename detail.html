@@ -723,7 +723,8 @@ font-size: 25px;
                        <div class="col-md-11 nopadding">
                          <div class="row nomargin">
                            <div class="col-md-4 subpadding">
-                             <input type="text" name="participant_name[{{$name->id}}][{{$part->id}}]" class="editable form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom" placeholder="이름" value="이름 예" disabled />
+                             <input type="text" name="participant_name[{{$name->id}}][{{$part->id}}]" class="editable form-control rounded-0 border-top-0 border-left-0 border-right-0 marginbottom is-invalid" placeholder="이름" value="이름 예" disabled />
+			<div class="invalid-feedback">잘못된 데이터 입니다.</div>
 
                            </div>
                            <div class="col-md-4 subpadding">
